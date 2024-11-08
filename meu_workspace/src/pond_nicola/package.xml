@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pond_nicola</name>
+  <version>0.0.1</version>
+  <description>Pacote para navegação reativa e com mapa usando ROS2.</description>
+  <maintainer email="marcomeneguetti@gmail.com">Marco Rizzi</maintainer>
+  <license>MIT</license>
+
+  <!-- Dependências de execução -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <!-- Dependências de testes -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

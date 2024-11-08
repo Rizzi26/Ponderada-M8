@@ -1,0 +1,122 @@
+[1.673s] DEBUG:colcon:Command line arguments: ['/home/rizzi/.local/bin/colcon', 'build']
+[1.674s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7ba32ce062f0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ba32d0f2dd0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ba32d0f2dd0>>)
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.954s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.954s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace'
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.955s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.963s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extensions ['ignore', 'ignore_ament_install']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extension 'ignore'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extension 'ignore_ament_install'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extensions ['colcon_pkg']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extension 'colcon_pkg'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extensions ['colcon_meta']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extension 'colcon_meta'
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extensions ['ros']
+[2.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/pond_nicola) by extension 'ros'
+[3.005s] DEBUG:colcon.colcon_core.package_identification:Package 'src/pond_nicola' with type 'ros.ament_python' and name 'pond_nicola'
+[3.005s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[3.006s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[3.006s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[3.006s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[3.006s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_args' from command line to 'None'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_target' from command line to 'None'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_clean_cache' from command line to 'False'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_clean_first' from command line to 'False'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'cmake_force_configure' from command line to 'False'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'ament_cmake_args' from command line to 'None'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'catkin_cmake_args' from command line to 'None'
+[3.192s] Level 5:colcon.colcon_core.verb:set package 'pond_nicola' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.193s] DEBUG:colcon.colcon_core.verb:Building package 'pond_nicola' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola', 'merge_install': False, 'path': '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/src/pond_nicola', 'symlink_install': False, 'test_result_base': None}
+[3.193s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[3.195s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[3.196s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/src/pond_nicola' with build type 'ament_python'
+[3.196s] Level 1:colcon.colcon_core.shell:create_environment_hook('pond_nicola', 'ament_prefix_path')
+[3.244s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[3.244s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/ament_prefix_path.ps1'
+[3.257s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/ament_prefix_path.dsv'
+[3.269s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/ament_prefix_path.sh'
+[3.281s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.281s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.524s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/src/pond_nicola'
+[3.524s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.524s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.122s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/src/pond_nicola': PS1=(venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/prefix_override:/home/rizzi/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(venv) /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/pond_nicola build --build-base /home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/build install --record /home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/install.log --single-version-externally-managed install_data
+[5.340s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/src/pond_nicola' returned '0': PS1=(venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/prefix_override:/home/rizzi/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(venv) /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/pond_nicola build --build-base /home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/build install --record /home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/build/pond_nicola/install.log --single-version-externally-managed install_data
+[5.374s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola' for CMake module files
+[5.374s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola' for CMake config files
+[5.375s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/lib'
+[5.375s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/bin'
+[5.375s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/lib/pkgconfig/pond_nicola.pc'
+[5.375s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/lib/python3.10/site-packages'
+[5.375s] Level 1:colcon.colcon_core.shell:create_environment_hook('pond_nicola', 'pythonpath')
+[5.375s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/pythonpath.ps1'
+[5.377s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/pythonpath.dsv'
+[5.378s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/hook/pythonpath.sh'
+[5.378s] Level 1:colcon.colcon_core.environment:checking '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/bin'
+[5.378s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pond_nicola)
+[5.378s] INFO:colcon.colcon_core.shell:Creating package script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/package.ps1'
+[5.383s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/package.dsv'
+[5.385s] INFO:colcon.colcon_core.shell:Creating package script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/package.sh'
+[5.386s] INFO:colcon.colcon_core.shell:Creating package script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/package.bash'
+[5.389s] INFO:colcon.colcon_core.shell:Creating package script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/pond_nicola/package.zsh'
+[5.391s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/pond_nicola/share/colcon-core/packages/pond_nicola)
+[5.391s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.392s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.392s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.392s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.408s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.409s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.409s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.427s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.432s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/local_setup.ps1'
+[5.438s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/_local_setup_util_ps1.py'
+[5.443s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/setup.ps1'
+[5.454s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/local_setup.sh'
+[5.456s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/_local_setup_util_sh.py'
+[5.456s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/setup.sh'
+[5.458s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/local_setup.bash'
+[5.459s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/setup.bash'
+[5.464s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/local_setup.zsh'
+[5.476s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rizzi/Documentos/GitHub/ponderada-m8/meu_workspace/install/setup.zsh'

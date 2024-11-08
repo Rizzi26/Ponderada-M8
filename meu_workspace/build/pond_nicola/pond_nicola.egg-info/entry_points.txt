@@ -1,0 +1,3 @@
+[console_scripts]
+pond_nicola = pond_nicola.main:main
+

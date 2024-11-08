@@ -1,0 +1,6 @@
+source;share/pond_nicola/hook/pythonpath.ps1
+source;share/pond_nicola/hook/pythonpath.dsv
+source;share/pond_nicola/hook/pythonpath.sh
+source;share/pond_nicola/hook/ament_prefix_path.ps1
+source;share/pond_nicola/hook/ament_prefix_path.dsv
+source;share/pond_nicola/hook/ament_prefix_path.sh
