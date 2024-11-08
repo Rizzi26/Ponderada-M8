@@ -9,6 +9,7 @@
   <!-- Dependências de execução -->
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <exec_depend>cg_interfaces</exec_depend>
 
   <!-- Dependências de testes -->
   <test_depend>ament_copyright</test_depend>

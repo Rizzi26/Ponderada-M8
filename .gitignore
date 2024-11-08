@@ -3,3 +3,8 @@ meu_workspace/build/
 meu_workspace/log/
 venv/
 
+meu_workspace/src/cg_interfaces/CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+

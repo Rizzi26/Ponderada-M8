@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>cg_interfaces</name>
+  <version>0.0.0</version>
+  <description>Pacote contendo interfaces de serviço para o projeto</description>
+
+  <maintainer email="rizzi@exemplo.com">Marco Rizzi</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Dependência necessária para gerar as mensagens de serviço -->
+  <depend>rosidl_default_generators</depend>
+
+  <!-- Dependência do rclpy, caso você utilize em algum código do pacote -->
+  <exec_depend>rclpy</exec_depend>
+
+  <!-- Dependência para tipos de mensagens básicos (como int32, bool), se usados no serviço -->
+  <depend>std_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
