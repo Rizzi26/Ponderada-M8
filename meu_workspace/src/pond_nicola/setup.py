@@ -10,7 +10,11 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=[
+        'setuptools',
+        'typer',
+        'rclpy',
+        ],
     zip_safe=True,
     maintainer='rizzi',
     maintainer_email='rizzi@todo.todo',
@@ -19,8 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'navegacao_reativa = pond_nicola.navegacao_reativa:main',
-            'navegacao_mapa = pond_nicola.navegacao_mapa:main',
+            "pond_nicola_cli = pond_nicola.main:app",
         ],
     },
 )
