@@ -1,5 +1,5 @@
-install/
-build/
-log/
+meu_workspace/install/
+meu_workspace/build/
+meu_workspace/log/
 venv/
 
