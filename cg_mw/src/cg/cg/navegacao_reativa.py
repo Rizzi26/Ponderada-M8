@@ -1,87 +1,103 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import SingleThreadedExecutor
 from cg_interfaces.srv import MoveCmd
+from collections import deque
 
-
-class NavegacaoReativa(Node):
+class ReactiveNavigator(Node):
     def __init__(self):
-        super().__init__('navegacao_reativa')
-        self.get_logger().info("Nó de Navegação Reativa iniciado")
+        super().__init__('reactive_navigator')
+        
+        # Cliente para o serviço 'move_command'
+        self.cli = self.create_client(MoveCmd, 'move_command')
+        while not self.cli.wait_for_service(timeout_sec=0.5):
+            self.get_logger().info('Service move_command not available, waiting again...')
+        
+        # Cria uma requisição para o serviço 'MoveCmd'
+        self.req = MoveCmd.Request()
+        
+        # Inicializa posições visitadas e posição atual
+        self.visited_positions = set()
+        self.current_position = (0, 0)
+        
+        # Variável para armazenar a resposta do serviço
+        self.response = None
 
-        # Configuração do cliente de serviço
-        self.cliente_move = self.create_client(MoveCmd, '/move_command')
+    def move_robot(self, direction):
+        self.req.direction = direction
+        self.future = self.cli.call_async(self.req)
+        self.future.add_done_callback(self.done_callback)
 
-        # Certifique-se de que o serviço está disponível antes de continuar
-        while not self.cliente_move.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Aguardando pelo serviço /move_command...')
+    def done_callback(self, future):
+        try:
+            self.response = future.result()
+        except Exception as e:
+            self.get_logger().error(f"Service call failed: {e}")
+            self.response = None
 
-    def navegar(self):
-        # Lógica de navegação reativa
-        self.get_logger().info("Executando navegação reativa")
+    def navigate(self):
+        directions_map = {
+            'up': (0, 1),
+            'down': (0, -1),
+            'left': (-1, 0),
+            'right': (1, 0)
+        }
+        
+        queue = deque([(self.current_position, None)])  # Inicializa a fila com a posição inicial
 
-        while rclpy.ok():
-            # Cria uma requisição para o serviço de movimento
-            req = MoveCmd.Request()
-            req.direction = "right"  # Temporário, apenas para inicializar a variável
-
-            # Chama o serviço e aguarda a resposta
-            future = self.cliente_move.call_async(req)
-            rclpy.spin_until_future_complete(self, future)
+        while queue:
+            current_position, direction_to_get_here = queue.popleft()
+            self.visited_positions.add(current_position)
             
-            if future.result() is not None:
-                response = future.result()
+            if direction_to_get_here:
+                self.move_robot(direction_to_get_here)
+                
+                while self.response is None:
+                    rclpy.spin_once(self, timeout_sec=0.1)
+                
+                response = self.response
+                self.response = None
+                
+                if response and all(a == b for a, b in zip(response.target_pos, response.robot_pos)):
+                    self.get_logger().info("Target reached!")
+                    return
+                
+                if not response or not response.success:
+                    continue
 
-                # Verifica os sensores
-                left = response.left
-                down = response.down
-                up = response.up
-                right = response.right
-
-                # Lógica para decidir a direção com base nos sensores
-                if right == 't':
-                    req.direction = "right"
-                elif down == 't':
-                    req.direction = "down"
-                elif left == 't':
-                    req.direction = "left"
-                elif up == 't':
-                    req.direction = "up"
-                elif right == 'f':
-                    req.direction = "right"
-                elif down == 'f':
-                    req.direction = "down"
-                elif left == 'f':
-                    req.direction = "left"
-                elif up == 'f':
-                    req.direction = "up"
-                else:
-                    self.get_logger().info("Nenhuma direção disponível para se mover.")
-                    break
-
-                # Envia o comando de movimento
-                future_move = self.cliente_move.call_async(req)
-                rclpy.spin_until_future_complete(self, future_move)
-
-                # Verifica se o movimento foi bem-sucedido
-                if future_move.result().success:
-                    self.get_logger().info(f"Movendo para {req.direction}")
-                else:
-                    self.get_logger().warning(f"Movimento {req.direction} falhou.")
-            else:
-                self.get_logger().error("Falha na resposta do serviço de movimento.")
-                break
-
+                self.get_logger().info(f"Move successful to position {current_position}")
+                self.get_logger().info(f"Robot sees: left={response.left}, down={response.down}, up={response.up}, right={response.right}")
+            
+            for direction, (dx, dy) in directions_map.items():
+                new_position = (current_position[0] + dx, current_position[1] + dy)
+                if new_position not in self.visited_positions:
+                    queue.append((new_position, direction))
+        
+        self.get_logger().info("Exploration complete, target not found.")
 
 def main(args=None):
-    rclpy.init(args=args)
-    nodo_navegacao_reativa = NavegacaoReativa()
+    # Inicializa o sistema ROS2 se ainda não estiver inicializado
+    if not rclpy.ok():
+        rclpy.init(args=args)
+    
+    # Cria um executor dedicado
+    executor = SingleThreadedExecutor()
+    
+    # Cria o nó e adiciona ao executor
+    navigator = ReactiveNavigator()
+    executor.add_node(navigator)
+    
+    try:
+        # Inicia a navegação
+        navigator.get_logger().info("Starting navigation...")
+        navigator.navigate()
+    finally:
+        # Destrói o nó e encerra o executor
+        navigator.destroy_node()
+        executor.shutdown()
+        if rclpy.ok():
+            rclpy.shutdown()
 
-    # Execute a lógica de navegação
-    nodo_navegacao_reativa.navegar()
-
-    nodo_navegacao_reativa.destroy_node()
-    rclpy.shutdown()
-
-
+# Ponto de entrada do programa
 if __name__ == '__main__':
     main()
