@@ -53,7 +53,7 @@ class NavReativa(Node):
                 self.move(direction_to_get_here)
                 
                 while self.response is None:
-                    rclpy.spin_once(self, timeout_sec=0.1)
+                    rclpy.spin_once(self, timeout_sec=0.05)
                 
                 response = self.response
                 self.response = None

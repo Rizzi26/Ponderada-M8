@@ -7,7 +7,7 @@ import heapq
 
 class NavMapa(Node):
     def __init__(self):
-        super().__init__('map_navigation')
+        super().__init__('nav_mapa')
         
         # Clientes para os serviços de movimento e obtenção de mapa
         self.move_client = self.create_client(MoveCmd, '/move_command')
@@ -31,11 +31,9 @@ class NavMapa(Node):
         self.path = self.plan_path(self.start_pos, self.target_pos)
 
     def get_map(self):
-        """Requisita o mapa usando o serviço /get_map e reconstrói o grid."""
         request = GetMap.Request()
         future = self.map_client.call_async(request)
         
-        # Espera pela resposta usando spin_once
         while not future.done():
             rclpy.spin_once(self, timeout_sec=0.1)
         
@@ -97,7 +95,6 @@ class NavMapa(Node):
         return abs(pos[0] - target[0]) + abs(pos[1] - target[1])
 
     def get_neighbors(self, pos):
-        """Retorna os vizinhos de uma posição com suas direções."""
         directions = {
             'up': (-1, 0),
             'down': (1, 0),

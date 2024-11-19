@@ -12,3 +12,6 @@ meu_workspace/src/pond_nicola/pond_nicola.egg-info/
 
 
 
+install/
+build/
+log/
