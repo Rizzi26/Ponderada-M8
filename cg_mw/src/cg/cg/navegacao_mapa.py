@@ -5,7 +5,7 @@ from cg_interfaces.srv import MoveCmd, GetMap
 import heapq
 
 
-class MapNavigation(Node):
+class NavMapa(Node):
     def __init__(self):
         super().__init__('map_navigation')
         
@@ -21,7 +21,7 @@ class MapNavigation(Node):
         
         # Obtém o mapa e define as posições inicial e alvo
         self.map = self.get_map()
-        self.start_pos, self.target_pos = self.find_positions(self.map)
+        self.start_pos, self.target_pos = self.find_pose(self.map)
         
         if self.start_pos is None or self.target_pos is None:
             self.get_logger().error("Posições inicial ou alvo não encontradas no mapa.")
@@ -51,8 +51,7 @@ class MapNavigation(Node):
         map_2d = [map_data[i:i + map_shape[1]] for i in range(0, len(map_data), map_shape[1])]
         return map_2d
 
-    def find_positions(self, map_2d):
-        """Encontra a posição inicial do robô e o alvo no mapa."""
+    def find_pose(self, map_2d):
         start_pos = None
         target_pos = None
         for i, row in enumerate(map_2d):
@@ -64,7 +63,6 @@ class MapNavigation(Node):
         return start_pos, target_pos
 
     def plan_path(self, start, target):
-        """Implementa o algoritmo A* para planejar o caminho."""
         open_list = []
         heapq.heappush(open_list, (0, start))
         came_from = {}
@@ -74,7 +72,7 @@ class MapNavigation(Node):
         while open_list:
             _, current = heapq.heappop(open_list)
             
-            # Verifica se chegamos ao alvo
+            # Verifica se chegou ao alvo
             if current == target:
                 return self.reconstruct_path(came_from, current)
             
@@ -141,7 +139,6 @@ class MapNavigation(Node):
         request.direction = direction
         future = self.move_client.call_async(request)
         
-        # Espera pela resposta usando spin_once
         while not future.done():
             rclpy.spin_once(self, timeout_sec=0.1)
         
@@ -149,12 +146,11 @@ class MapNavigation(Node):
 
 
 def main(args=None):
-    # Garante que o ROS2 seja inicializado apenas uma vez
     if not rclpy.ok():
         rclpy.init(args=args)
     
     executor = SingleThreadedExecutor()
-    navigator = MapNavigation()
+    navigator = NavMapa()
     executor.add_node(navigator)
     
     try:

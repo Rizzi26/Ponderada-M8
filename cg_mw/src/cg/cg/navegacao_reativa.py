@@ -4,9 +4,9 @@ from rclpy.executors import SingleThreadedExecutor
 from cg_interfaces.srv import MoveCmd
 from collections import deque
 
-class ReactiveNavigator(Node):
+class NavReativa(Node):
     def __init__(self):
-        super().__init__('reactive_navigator')
+        super().__init__('nav_reativa')
         
         # Cliente para o serviço 'move_command'
         self.cli = self.create_client(MoveCmd, 'move_command')
@@ -23,7 +23,7 @@ class ReactiveNavigator(Node):
         # Variável para armazenar a resposta do serviço
         self.response = None
 
-    def move_robot(self, direction):
+    def move(self, direction):
         self.req.direction = direction
         self.future = self.cli.call_async(self.req)
         self.future.add_done_callback(self.done_callback)
@@ -35,7 +35,7 @@ class ReactiveNavigator(Node):
             self.get_logger().error(f"Service call failed: {e}")
             self.response = None
 
-    def navigate(self):
+    def nav(self):
         directions_map = {
             'up': (0, 1),
             'down': (0, -1),
@@ -43,14 +43,14 @@ class ReactiveNavigator(Node):
             'right': (1, 0)
         }
         
-        queue = deque([(self.current_position, None)])  # Inicializa a fila com a posição inicial
+        queue = deque([(self.current_position, None)])  
 
         while queue:
             current_position, direction_to_get_here = queue.popleft()
             self.visited_positions.add(current_position)
             
             if direction_to_get_here:
-                self.move_robot(direction_to_get_here)
+                self.move(direction_to_get_here)
                 
                 while self.response is None:
                     rclpy.spin_once(self, timeout_sec=0.1)
@@ -76,7 +76,6 @@ class ReactiveNavigator(Node):
         self.get_logger().info("Exploration complete, target not found.")
 
 def main(args=None):
-    # Inicializa o sistema ROS2 se ainda não estiver inicializado
     if not rclpy.ok():
         rclpy.init(args=args)
     
@@ -84,15 +83,14 @@ def main(args=None):
     executor = SingleThreadedExecutor()
     
     # Cria o nó e adiciona ao executor
-    navigator = ReactiveNavigator()
+    navigator = NavReativa()
     executor.add_node(navigator)
     
     try:
         # Inicia a navegação
         navigator.get_logger().info("Starting navigation...")
-        navigator.navigate()
+        navigator.nav()
     finally:
-        # Destrói o nó e encerra o executor
         navigator.destroy_node()
         executor.shutdown()
         if rclpy.ok():
